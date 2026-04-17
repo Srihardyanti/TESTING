@@ -1,272 +1,1428 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sri Hardyanti – Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sri Hardyanti – Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-<!-- GOOGLE FONT -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#0D2137;
+      --navy-mid:#1A3A5C;
+      --navy-light:#2A5482;
+      --gold:#C4993A;
+      --gold-soft:#E8C97A;
+      --cream:#F8F7F4;
+      --white:#FFFFFF;
+      --ink:#15283B;
+      --muted:#5A6B7C;
+      --border:#D7E0E8;
+      --surface:#EEF3F8;
+      --surface-2:#F5F8FB;
+      --shadow:0 18px 40px rgba(13,33,55,.08);
+      --radius:18px;
+      --max:1260px;
+    }
 
-<style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
-/* RESET */
-* { margin:0; padding:0; box-sizing:border-box; }
+    html{
+      scroll-behavior:smooth;
+    }
 
-body {
-  font-family: 'Inter', sans-serif;
-  background:#F8F7F4;
-  color:#0D2137;
-  line-height:1.7;
-}
+    body{
+      background:var(--cream);
+      color:var(--ink);
+      font-family:'Inter',sans-serif;
+      line-height:1.8;
+      font-size:18px;
+    }
 
-/* NAV */
-.nav {
-  position:fixed;
-  top:0;
-  width:100%;
-  background:#0D2137;
-  color:white;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:16px 24px;
-  z-index:1000;
-}
+    img{
+      max-width:100%;
+      display:block;
+    }
 
-.nav-brand {
-  font-family:'Playfair Display', serif;
-  font-size:20px;
-}
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
 
-.nav-menu-btn {
-  font-size:22px;
-  cursor:pointer;
-}
+    .container{
+      width:min(var(--max), 100% - 48px);
+      margin-inline:auto;
+    }
 
-.nav-drawer {
-  position:fixed;
-  top:60px;
-  right:0;
-  background:white;
-  width:220px;
-  padding:20px;
-  display:none;
-  box-shadow:0 10px 30px rgba(0,0,0,0.1);
-}
+    .mono{
+      font-family:'Space Mono', monospace;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-size:13px;
+      color:var(--gold);
+    }
 
-.nav-drawer a {
-  display:block;
-  margin-bottom:16px;
-  text-decoration:none;
-  color:#0D2137;
-  font-weight:500;
-}
+    .section{
+      padding:88px 0;
+      scroll-margin-top:110px;
+    }
 
-/* SECTION */
-.section {
-  min-height:100vh;
-  padding:120px 8vw 80px;
-  max-width:1100px;
-  margin:auto;
-}
+    .section-head{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-bottom:34px;
+    }
 
-/* HERO */
-.hero {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:60px;
-}
+    .section-title{
+      font-family:'Playfair Display', serif;
+      font-weight:600;
+      font-size:clamp(30px, 4vw, 48px);
+      line-height:1.15;
+      color:var(--navy);
+    }
 
-.hero h1 {
-  font-family:'Playfair Display', serif;
-  font-size:64px;
-  line-height:1.1;
-}
+    .section-intro{
+      max-width:860px;
+      color:var(--muted);
+      font-size:18px;
+    }
 
-.about {
-  margin:20px 0 30px;
-  color:#555;
-}
+    /* NAV */
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(13,33,55,.94);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
 
-/* BUTTON */
-.btn-primary {
-  display:inline-block;
-  padding:14px 28px;
-  background:#0D2137;
-  color:white;
-  text-decoration:none;
-  font-weight:600;
-}
+    .nav-wrap{
+      height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
 
-/* SKILLS */
-.skills li {
-  margin-bottom:18px;
-}
+    .brand{
+      font-family:'Playfair Display', serif;
+      font-size:24px;
+      font-weight:600;
+      color:var(--gold);
+      white-space:nowrap;
+    }
 
-.skills span {
-  display:block;
-  color:#777;
-  font-size:14px;
-}
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:26px;
+      list-style:none;
+    }
 
-/* EXPERIENCE */
-.exp-card {
-  background:white;
-  padding:24px;
-  margin-bottom:20px;
-  border:1px solid #ddd;
-}
+    .nav-links a{
+      color:rgba(255,255,255,.78);
+      font-size:14px;
+      font-weight:600;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      transition:.25s ease;
+    }
 
-.role {
-  color:#C4993A;
-  font-weight:500;
-}
+    .nav-links a:hover,
+    .nav-links a.active{
+      color:var(--gold-soft);
+    }
 
-.desc {
-  color:#555;
-}
+    .menu-btn{
+      display:none;
+      border:none;
+      background:none;
+      color:#fff;
+      font-size:26px;
+      cursor:pointer;
+    }
 
-/* EXPERTISE */
-.section-title {
-  font-family:'Playfair Display', serif;
-  font-size:36px;
-  margin-bottom:40px;
-}
+    .mobile-panel{
+      display:none;
+      padding:0 0 18px;
+    }
 
-.expertise-grid {
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:20px;
-}
+    .mobile-panel.open{
+      display:block;
+    }
 
-.expertise-card {
-  background:white;
-  padding:28px;
-  border:1px solid #ddd;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
+    .mobile-panel a{
+      display:block;
+      padding:12px 0;
+      color:rgba(255,255,255,.82);
+      border-top:1px solid rgba(255,255,255,.08);
+      font-size:14px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-weight:600;
+    }
 
-.expertise-card h3 {
-  font-size:18px;
-  letter-spacing:0.05em;
-  text-transform:uppercase;
-  color:#0D2137;
-}
+    /* HERO */
+    .hero{
+      padding:72px 0 54px;
+    }
 
-.expertise-card p {
-  color:#555;
-}
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:34px;
+      align-items:start;
+    }
 
-/* RESPONSIVE */
-@media (max-width:900px){
-  .hero { grid-template-columns:1fr; }
-  .expertise-grid { grid-template-columns:1fr; }
-}
+    .hero-card,
+    .competency-card{
+      background:var(--white);
+      border:1px solid var(--border);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+    }
 
-</style>
+    .hero-card{
+      padding:42px;
+    }
+
+    .hero-name{
+      font-family:'Playfair Display', serif;
+      font-size:clamp(52px, 8vw, 92px);
+      line-height:.96;
+      color:var(--navy);
+      margin-bottom:26px;
+      font-weight:600;
+    }
+
+    .hero-about-label{
+      margin-bottom:12px;
+    }
+
+    .hero-about{
+      max-width:720px;
+      color:var(--muted);
+      font-size:19px;
+      line-height:1.9;
+      border-left:3px solid var(--gold);
+      padding-left:18px;
+      margin-bottom:28px;
+    }
+
+    .hero-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:30px;
+    }
+
+    .tag{
+      background:var(--surface-2);
+      border:1px solid var(--border);
+      border-radius:999px;
+      padding:10px 16px;
+      font-size:14px;
+      color:var(--navy-mid);
+      font-weight:500;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    .btn,
+    .btn-secondary{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 22px;
+      border-radius:999px;
+      font-weight:600;
+      transition:.2s ease;
+    }
+
+    .btn{
+      background:var(--navy);
+      color:#fff;
+      border:1px solid var(--navy);
+    }
+
+    .btn:hover{
+      background:var(--navy-mid);
+      border-color:var(--navy-mid);
+    }
+
+    .btn-secondary{
+      background:transparent;
+      border:1px solid var(--border);
+      color:var(--navy);
+    }
+
+    .btn-secondary:hover{
+      background:var(--surface);
+    }
+
+    .competency-card{
+      padding:34px 30px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .competency-title{
+      margin-bottom:18px;
+    }
+
+    .competency-list{
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .competency-list li{
+      display:grid;
+      grid-template-columns:44px 1fr;
+      gap:14px;
+      padding-bottom:18px;
+      border-bottom:1px solid var(--border);
+    }
+
+    .competency-list li:last-child{
+      border-bottom:none;
+      padding-bottom:0;
+    }
+
+    .competency-num{
+      font-family:'Space Mono', monospace;
+      color:rgba(13,33,55,.35);
+      font-weight:700;
+      font-size:14px;
+      padding-top:2px;
+    }
+
+    .competency-name{
+      font-weight:600;
+      color:var(--navy);
+      margin-bottom:4px;
+      font-size:18px;
+    }
+
+    .competency-desc{
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.7;
+    }
+
+    /* DIVIDER */
+    .divider{
+      height:1px;
+      background:var(--border);
+    }
+
+    /* EXPERIENCE */
+    .experience-shell{
+      display:grid;
+      gap:24px;
+    }
+
+    .domain-block{
+      background:var(--white);
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:30px;
+      box-shadow:var(--shadow);
+    }
+
+    .domain-grid{
+      display:grid;
+      grid-template-columns:270px 1fr;
+      gap:30px;
+    }
+
+    .domain-side{
+      padding-right:26px;
+      border-right:1px solid var(--border);
+    }
+
+    .domain-name{
+      font-family:'Playfair Display', serif;
+      color:var(--navy);
+      font-size:29px;
+      line-height:1.2;
+      margin-bottom:10px;
+      font-weight:600;
+    }
+
+    .domain-desc{
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.75;
+    }
+
+    .role-list{
+      display:flex;
+      flex-direction:column;
+      gap:22px;
+    }
+
+    .role-item{
+      padding-bottom:20px;
+      border-bottom:1px solid var(--border);
+    }
+
+    .role-item:last-child{
+      border-bottom:none;
+      padding-bottom:0;
+    }
+
+    .role-head{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      align-items:flex-start;
+      margin-bottom:8px;
+    }
+
+    .org{
+      font-weight:700;
+      color:var(--navy);
+      font-size:20px;
+      line-height:1.35;
+    }
+
+    .role{
+      color:var(--gold);
+      font-weight:600;
+      font-size:17px;
+      margin-top:2px;
+    }
+
+    .period{
+      font-family:'Space Mono', monospace;
+      color:var(--muted);
+      font-size:13px;
+      white-space:nowrap;
+      padding-top:2px;
+    }
+
+    .role-desc{
+      color:#415365;
+      font-size:17px;
+      line-height:1.85;
+      max-width:880px;
+    }
+
+    .role-link{
+      display:inline-block;
+      margin-top:10px;
+      color:var(--navy-light);
+      border-bottom:1px solid var(--navy-light);
+      font-weight:600;
+      font-size:16px;
+    }
+
+    /* WORK TABS */
+    .tabs{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:26px;
+    }
+
+    .tab-btn{
+      border:1px solid var(--border);
+      background:var(--white);
+      color:var(--muted);
+      padding:14px 18px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:600;
+      font-size:15px;
+      transition:.2s ease;
+    }
+
+    .tab-btn.active{
+      background:var(--navy);
+      border-color:var(--navy);
+      color:#fff;
+    }
+
+    .tab-panel{
+      display:none;
+      animation:fade .28s ease;
+    }
+
+    .tab-panel.active{
+      display:block;
+    }
+
+    @keyframes fade{
+      from{opacity:0; transform:translateY(8px);}
+      to{opacity:1; transform:translateY(0);}
+    }
+
+    .overview-box,
+    .note-box{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-left:4px solid var(--navy);
+      border-radius:0 18px 18px 0;
+      padding:24px 24px 24px 22px;
+      color:#35495b;
+      margin-bottom:22px;
+    }
+
+    .note-box{
+      border-left-color:var(--gold);
+      color:var(--muted);
+      background:var(--surface-2);
+    }
+
+    .subsection-title{
+      font-family:'Playfair Display', serif;
+      font-size:28px;
+      color:var(--navy);
+      line-height:1.25;
+      margin:36px 0 18px;
+      font-weight:600;
+    }
+
+    .course-preview{
+      display:grid;
+      grid-template-columns:320px 1fr;
+      gap:26px;
+      align-items:center;
+      background:var(--white);
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:24px;
+      box-shadow:var(--shadow);
+      margin-bottom:26px;
+    }
+
+    .course-visual{
+      aspect-ratio:16/10;
+      background:linear-gradient(135deg,#FFF4F8 0%, #F6EFFF 100%);
+      border:1px solid var(--border);
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--muted);
+      text-align:center;
+      padding:22px;
+      font-size:16px;
+    }
+
+    .course-copy h4{
+      font-size:25px;
+      color:var(--navy);
+      line-height:1.3;
+      margin-bottom:10px;
+    }
+
+    .course-copy p{
+      color:#425364;
+      margin-bottom:14px;
+    }
+
+    /* BALANCED EXPERTISE LAYOUT */
+    .triad-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+      margin-top:12px;
+    }
+
+    .triad-card{
+      background:var(--white);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:24px;
+      box-shadow:var(--shadow);
+      min-height:100%;
+    }
+
+    .triad-card h4{
+      font-size:14px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--gold);
+      margin-bottom:12px;
+    }
+
+    .triad-card p,
+    .triad-card li{
+      font-size:16px;
+      color:#445668;
+      line-height:1.8;
+    }
+
+    .triad-card ul{
+      margin-left:18px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    /* QA */
+    .qa-grid{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:18px;
+      margin-top:10px;
+    }
+
+    .qa-card{
+      background:var(--white);
+      border:1px solid var(--border);
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+    }
+
+    .qa-card-head{
+      padding:16px 20px;
+      background:var(--navy);
+      color:#fff;
+      font-weight:700;
+      font-size:17px;
+    }
+
+    .qa-card-body{
+      padding:22px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+
+    .qa-block{
+      padding:14px 16px;
+      background:var(--surface-2);
+      border:1px solid var(--border);
+      border-radius:16px;
+    }
+
+    .qa-label{
+      display:block;
+      color:var(--gold);
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      margin-bottom:6px;
+      font-weight:700;
+    }
+
+    .qa-text{
+      color:#425364;
+      font-size:16px;
+      line-height:1.75;
+    }
+
+    /* POLICY BRIEF */
+    .pb-steps{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:14px;
+      margin-top:10px;
+      margin-bottom:22px;
+    }
+
+    .pb-step{
+      background:var(--white);
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:20px;
+      box-shadow:var(--shadow);
+    }
+
+    .pb-step-num{
+      color:var(--gold);
+      font-family:'Space Mono', monospace;
+      font-size:12px;
+      letter-spacing:.16em;
+      margin-bottom:8px;
+    }
+
+    .pb-step-title{
+      color:var(--navy);
+      font-weight:700;
+      font-size:17px;
+      margin-bottom:8px;
+      line-height:1.4;
+    }
+
+    .pb-step-desc{
+      color:#425364;
+      font-size:15px;
+      line-height:1.75;
+    }
+
+    .pb-summary{
+      display:grid;
+      gap:14px;
+      margin-top:14px;
+    }
+
+    .pb-row{
+      display:grid;
+      grid-template-columns:220px 1fr;
+      gap:20px;
+      background:var(--white);
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:20px 22px;
+      box-shadow:var(--shadow);
+    }
+
+    .pb-row-label{
+      color:var(--navy-light);
+      font-weight:700;
+      font-size:16px;
+    }
+
+    .pb-row-text{
+      color:#425364;
+      font-size:16px;
+      line-height:1.8;
+    }
+
+    .pb-row-text ul{
+      margin-left:18px;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+
+    /* CONTACT */
+    .contact{
+      background:var(--navy);
+      color:#fff;
+      border-radius:32px 32px 0 0;
+      margin-top:24px;
+    }
+
+    .contact .section-title{
+      color:#fff;
+    }
+
+    .contact-copy{
+      max-width:760px;
+      color:rgba(255,255,255,.76);
+      font-size:18px;
+    }
+
+    .contact-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:26px;
+    }
+
+    .contact-chip{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      color:rgba(255,255,255,.88);
+      font-weight:600;
+      transition:.2s ease;
+    }
+
+    .contact-chip:hover{
+      border-color:var(--gold-soft);
+      color:#fff;
+      background:rgba(255,255,255,.06);
+    }
+
+    /* REVEAL */
+    .reveal{
+      opacity:0;
+      transform:translateY(18px);
+      transition:opacity .55s ease, transform .55s ease;
+    }
+
+    .reveal.show{
+      opacity:1;
+      transform:none;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1080px){
+      .hero-grid,
+      .course-preview,
+      .domain-grid{
+        grid-template-columns:1fr;
+      }
+
+      .domain-side{
+        border-right:none;
+        border-bottom:1px solid var(--border);
+        padding-right:0;
+        padding-bottom:18px;
+      }
+
+      .triad-grid,
+      .pb-steps{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media (max-width: 820px){
+      .nav-links{
+        display:none;
+      }
+
+      .menu-btn{
+        display:block;
+      }
+
+      .hero-card,
+      .competency-card,
+      .domain-block,
+      .course-preview,
+      .triad-card,
+      .qa-card,
+      .pb-step,
+      .pb-row{
+        border-radius:20px;
+      }
+
+      .qa-grid,
+      .triad-grid,
+      .pb-steps{
+        grid-template-columns:1fr;
+      }
+
+      .pb-row{
+        grid-template-columns:1fr;
+        gap:8px;
+      }
+
+      .role-head{
+        flex-direction:column;
+        gap:8px;
+      }
+
+      .hero-card{
+        padding:30px 24px;
+      }
+    }
+
+    @media (max-width: 560px){
+      body{
+        font-size:16px;
+      }
+
+      .container{
+        width:min(var(--max), 100% - 28px);
+      }
+
+      .section{
+        padding:68px 0;
+      }
+
+      .hero{
+        padding:42px 0 34px;
+      }
+
+      .hero-name{
+        font-size:54px;
+      }
+
+      .section-title{
+        font-size:32px;
+      }
+
+      .hero-about,
+      .overview-box,
+      .note-box{
+        font-size:16px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- NAV -->
-<div class="nav">
-  <div class="nav-brand">Sri Hardyanti</div>
-  <div class="nav-menu-btn" onclick="toggleMenu()">☰</div>
-</div>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="#home" class="brand">Sri Hardyanti</a>
 
-<div class="nav-drawer" id="navDrawer">
-  <a href="#profile">Profile</a>
-  <a href="#experience">Experience</a>
-  <a href="#expertise">Featured Work</a>
-</div>
-
-<!-- PROFILE -->
-<section id="profile" class="section">
-  <div class="hero">
-
-    <div>
-      <h1>Sri<br>Hardyanti</h1>
-      <p class="about">
-        Instructional Design professional with 4+ years of experience specializing in psychology-based learning content. 
-        Experienced in structured course design, QA, and research translation into applied learning.
-      </p>
-      <a href="#expertise" class="btn-primary">View My Work</a>
-    </div>
-
-    <div>
-      <h3>Core Competencies</h3>
-      <ul class="skills">
-        <li><strong>Instructional Design</strong><span>ADDIE, objectives, alignment</span></li>
-        <li><strong>Quality Assurance</strong><span>Content validation, feedback</span></li>
-        <li><strong>Research Translation</strong><span>Policy & applied learning</span></li>
-        <li><strong>AI Optimization</strong><span>AI-assisted workflows</span></li>
-        <li><strong>Collaboration</strong><span>SME & stakeholders</span></li>
+      <ul class="nav-links">
+        <li><a href="#home">Profile</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#work">Featured Work</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
     </div>
 
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience" class="section">
-  <h2 class="section-title">Professional Experience</h2>
-
-  <div class="exp-card">
-    <h3>The KPI Institute</h3>
-    <p class="role">Instructional Designer</p>
-    <p class="desc">
-      Reviewed and validated psychology-based learning materials, ensuring alignment with instructional design principles.
-    </p>
-  </div>
-
-  <div class="exp-card">
-    <h3>APDC</h3>
-    <p class="role">Research & Facilitation</p>
-    <p class="desc">
-      Conducted assessments, facilitated FGD, and translated psychological insights into practical programs.
-    </p>
-  </div>
-</section>
-
-<!-- EXPERTISE -->
-<section id="expertise" class="section">
-  <h2 class="section-title">Featured Work & Expertise</h2>
-
-  <div class="expertise-grid">
-
-    <div class="expertise-card">
-      <h3>Process</h3>
-      <p>
-        Structured development using ADDIE to ensure clarity, flow, and alignment between objectives and learning activities.
-      </p>
+    <div class="container mobile-panel" id="mobilePanel">
+      <a href="#home">Profile</a>
+      <a href="#experience">Experience</a>
+      <a href="#work">Featured Work</a>
+      <a href="#contact">Contact</a>
     </div>
+  </header>
 
-    <div class="expertise-card">
-      <h3>Analytical Approach</h3>
-      <p>
-        Applied psychological frameworks and learner behavior insights to design evidence-based learning experiences.
-      </p>
-    </div>
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-card reveal">
+          <div class="mono hero-about-label">About Me</div>
+          <h1 class="hero-name">Sri<br>Hardyanti</h1>
 
-    <div class="expertise-card">
-      <h3>Output</h3>
-      <p>
-        Produced interactive learning materials, QA systems, and policy briefs translating theory into application.
-      </p>
-    </div>
+          <p class="hero-about">
+            Instructional Design professional with 4+ years of experience specializing in psychology-based learning content. Proficient in structured course design, quality assurance across self-paced and instructor-led programs, cross-functional collaboration, and data-informed strategic initiatives.
+          </p>
 
-  </div>
-</section>
+          <div class="hero-tags">
+            <span class="tag">Instructional Design</span>
+            <span class="tag">Quality Assurance</span>
+            <span class="tag">Research Translation</span>
+            <span class="tag">Psychology-Based Learning</span>
+            <span class="tag">Cross-Functional Collaboration</span>
+          </div>
 
-<script>
-function toggleMenu() {
-  const drawer = document.getElementById("navDrawer");
-  drawer.style.display = drawer.style.display === "block" ? "none" : "block";
-}
-</script>
+          <div class="hero-actions">
+            <a class="btn" href="#work">View My Work</a>
+            <a class="btn-secondary" href="#experience">See Experience</a>
+          </div>
+        </div>
 
+        <aside class="competency-card reveal">
+          <div class="mono competency-title">Core Competencies</div>
+
+          <ul class="competency-list">
+            <li>
+              <div class="competency-num">01</div>
+              <div>
+                <div class="competency-name">Instructional Design</div>
+                <div class="competency-desc">ADDIE framework, learning objectives, scaffolding, and assessment alignment.</div>
+              </div>
+            </li>
+
+            <li>
+              <div class="competency-num">02</div>
+              <div>
+                <div class="competency-name">Quality Assurance</div>
+                <div class="competency-desc">Content review, constructive feedback, and guideline development.</div>
+              </div>
+            </li>
+
+            <li>
+              <div class="competency-num">03</div>
+              <div>
+                <div class="competency-name">Research Translation</div>
+                <div class="competency-desc">Policy brief writing and evidence-based recommendations for practical contexts.</div>
+              </div>
+            </li>
+
+            <li>
+              <div class="competency-num">04</div>
+              <div>
+                <div class="competency-name">AI Tools Optimization</div>
+                <div class="competency-desc">AI-assisted content development and course configuration support.</div>
+              </div>
+            </li>
+
+            <li>
+              <div class="competency-num">05</div>
+              <div>
+                <div class="competency-name">Cross-Functional Collaboration</div>
+                <div class="competency-desc">SME coordination, stakeholder alignment, and collaboration with creative and business teams.</div>
+              </div>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="mono">Professional Experience</div>
+          <h2 class="section-title">Key Areas of Work Experience and Contribution</h2>
+          <p class="section-intro">
+            I kept this section close to your original structure, but removed the large icons so the reader focuses more on the role clusters and the actual contribution.
+          </p>
+        </div>
+
+        <div class="experience-shell">
+          <article class="domain-block reveal">
+            <div class="domain-grid">
+              <div class="domain-side">
+                <h3 class="domain-name">Psychology &amp; Learning</h3>
+                <p class="domain-desc">
+                  Roles related to psychology-based learning design, research application, and learner development.
+                </p>
+              </div>
+
+              <div class="role-list">
+                <div class="role-item">
+                  <div class="role-head">
+                    <div>
+                      <div class="org">The KPI Institute</div>
+                      <div class="role">Instructional Designer / Quality-Related Contribution</div>
+                    </div>
+                    <div class="period">Recent role</div>
+                  </div>
+                  <p class="role-desc">
+                    Reviewed and validated psychology-based learning materials across self-paced and instructor-led formats, supported the development of structured learning outputs, and contributed to quality assurance processes and guideline alignment.
+                  </p>
+                </div>
+
+                <div class="role-item">
+                  <div class="role-head">
+                    <div>
+                      <div class="org">Center for Indigenous and Cultural Psychology (CICP), Universitas Gadjah Mada</div>
+                      <div class="role">Policy Brief Writer</div>
+                    </div>
+                    <div class="period">Master’s study period</div>
+                  </div>
+                  <p class="role-desc">
+                    Translated psychology research, especially on family dynamics and social relationships, into actionable policy recommendations relevant to Indonesian education and employment contexts.
+                  </p>
+                </div>
+
+                <div class="role-item">
+                  <div class="role-head">
+                    <div>
+                      <div class="org">Teknologi University Yogyakarta</div>
+                      <div class="role">Lecturer</div>
+                    </div>
+                    <div class="period">Sep 2021 – Feb 2022</div>
+                  </div>
+                  <p class="role-desc">
+                    Delivered personal development lectures to support students in adapting to university life and preparing for their careers, covering self-assessment, job market trends, and practical application strategies.
+                  </p>
+                  <a class="role-link" href="https://uty.ac.id/" target="_blank" rel="noopener noreferrer">uty.ac.id ↗</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="domain-block reveal">
+            <div class="domain-grid">
+              <div class="domain-side">
+                <h3 class="domain-name">Cross-Functional Project Support</h3>
+                <p class="domain-desc">
+                  Experience that overlaps with content operations, coordination, and quality review across different learning outputs.
+                </p>
+              </div>
+
+              <div class="role-list">
+                <div class="role-item">
+                  <div class="role-head">
+                    <div>
+                      <div class="org">Learning Content / QA Contribution</div>
+                      <div class="role">Cross-Functional Coordination</div>
+                    </div>
+                    <div class="period">Ongoing expertise</div>
+                  </div>
+                  <p class="role-desc">
+                    Worked across product, SME, and creative touchpoints to maintain clarity, instructional quality, and consistency in learning materials, including scripts, assessments, and course configuration support.
+                  </p>
+                </div>
+
+                <div class="role-item">
+                  <div class="role-head">
+                    <div>
+                      <div class="org">AI-Supported Strategic Initiatives</div>
+                      <div class="role">Data-Informed Support</div>
+                    </div>
+                    <div class="period">Selected initiatives</div>
+                  </div>
+                  <p class="role-desc">
+                    Supported data analysis and AI-related initiatives intended to improve efficiency in content development and course production workflows.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="mono">Featured Work &amp; Expertise</div>
+          <h2 class="section-title">A More Balanced View of Process, Analysis, and Output</h2>
+          <p class="section-intro">
+            Instead of one long dense flow, this section uses tabs and card groupings so each expertise area feels easier to scan. The structure below keeps your original three-part organization: Instructional Design, Quality Assurance, and Research Translation into Actionable Insights.
+          </p>
+        </div>
+
+        <div class="tabs reveal">
+          <button class="tab-btn active" data-tab="id">01 Instructional Design</button>
+          <button class="tab-btn" data-tab="qa">02 Quality Assurance</button>
+          <button class="tab-btn" data-tab="pb">03 Policy Brief</button>
+        </div>
+
+        <!-- ID TAB -->
+        <div class="tab-panel active" id="tab-id">
+          <div class="overview-box reveal">
+            Most of my professional experience is closely related to instructional design, both in dedicated roles as an Instructional Designer and in adjacent roles such as Quality Assurance and Project Management, where I was responsible for ensuring the quality and effectiveness of learning outputs.<br><br>
+            Through working across different organizations, products, and learning formats, I have developed an understanding that instructional design involves both structured principles and contextual flexibility.<br><br>
+            On one hand, there are consistent foundations, such as applying established frameworks (e.g. ADDIE), defining clear and measurable learning objectives, structuring content through scaffolding, and designing assessments aligned with cognitive and behavioral principles to support learner comprehension. On the other hand, each project requires adaptation based on factors such as target audience, learning context, product format, and organizational framework.<br><br>
+            Due to confidentiality constraints, I am unable to share actual work samples from previous organizations. Instead, I have developed a dummy course to demonstrate how I apply instructional design principles in practice.
+          </div>
+
+          <div class="note-box reveal">
+            <strong>Notes:</strong> This is a dummy course developed for portfolio purposes, where AI and relevant sources were used for brainstorming. In real work settings, this process typically involves collaboration with business teams, Subject Matter Experts, and creative teams.
+          </div>
+
+          <h3 class="subsection-title reveal">Output Sample — Healthy Pregnancy: Understanding Changes, Challenges, and Informed Decisions</h3>
+
+          <div class="course-preview reveal">
+            <div class="course-visual">
+              Course preview area.<br><br>
+              You can replace this box with your screenshot, GIF, or embedded preview later.
+            </div>
+
+            <div class="course-copy">
+              <h4>Dummy Course for Portfolio Demonstration</h4>
+              <p>
+                This sample is positioned as a portfolio-safe demonstration of how instructional design decisions are translated into a structured learner experience.
+              </p>
+              <a class="btn-secondary" href="#" onclick="return false;">Preview link placeholder</a>
+            </div>
+          </div>
+
+          <div class="triad-grid reveal">
+            <div class="triad-card">
+              <h4>Process</h4>
+              <p>
+                Framed the course through a structured design workflow: defining the audience, clarifying scope, shaping learning objectives, chunking content, and building interactions that reinforce understanding rather than simply presenting information.
+              </p>
+            </div>
+
+            <div class="triad-card">
+              <h4>Analytical Approach</h4>
+              <ul>
+                <li>Applied instructional design principles such as scaffolding and alignment.</li>
+                <li>Considered cognitive load and the need for mobile-friendly presentation.</li>
+                <li>Balanced conceptual explanation with application-oriented activities.</li>
+              </ul>
+            </div>
+
+            <div class="triad-card">
+              <h4>Output</h4>
+              <p>
+                Produced a portfolio-ready dummy course concept that demonstrates theory slides, interaction logic, and assessment structure while remaining suitable for public presentation.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- QA TAB -->
+        <div class="tab-panel" id="tab-qa">
+          <div class="overview-box reveal">
+            My quality assurance experience goes beyond proofreading. It involves evaluating whether content, structure, and assessment design are aligned with the intended learning outcomes, source material, and learner needs. In practice, this means identifying weak logic, unclear framing, overcrowded slides, inaccurate generalization, and gaps between material and evaluation.
+          </div>
+
+          <h3 class="subsection-title reveal">Selected Quality Review Cases</h3>
+
+          <div class="qa-grid reveal">
+            <article class="qa-card">
+              <div class="qa-card-head">Case 1 — Unclear Main Claim</div>
+              <div class="qa-card-body">
+                <div class="qa-block">
+                  <span class="qa-label">Context</span>
+                  <div class="qa-text">
+                    This section explained goal attainment as a benefit of effective expense management.
+                  </div>
+                </div>
+                <div class="qa-block">
+                  <span class="qa-label">Identified Issue</span>
+                  <div class="qa-text">
+                    The opening slide did not clearly communicate the main claim. It introduced supporting ideas without establishing a strong central statement.
+                  </div>
+                </div>
+                <div class="qa-block">
+                  <span class="qa-label">Feedback Approach</span>
+                  <div class="qa-text">
+                    Recommended refining the opening slide into one concise thesis statement that clearly sets direction for the explanation and avoids introducing support points too early.
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="qa-card">
+              <div class="qa-card-head">Case 2 — Overgeneralized Assessment Statement</div>
+              <div class="qa-card-body">
+                <div class="qa-block">
+                  <span class="qa-label">Context</span>
+                  <div class="qa-text">
+                    True/False question based on statistical data from course material.
+                  </div>
+                </div>
+                <div class="qa-block">
+                  <span class="qa-label">Identified Issue</span>
+                  <div class="qa-text">
+                    The statement applied findings too broadly, whereas the original source described a narrower context.
+                  </div>
+                </div>
+                <div class="qa-block">
+                  <span class="qa-label">Feedback Approach</span>
+                  <div class="qa-text">
+                    Emphasized accuracy when translating data into assessment items, avoiding overgeneralization, and ensuring alignment between source material and the assessment statement.
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="qa-card">
+              <div class="qa-card-head">Case 3 — Overcrowded Opening Slide</div>
+              <div class="qa-card-body">
+                <div class="qa-block">
+                  <span class="qa-label">Context</span>
+                  <div class="qa-text">
+                    A slide attempted to introduce multiple perspectives at once but reduced clarity rather than increasing depth.
+                  </div>
+                </div>
+                <div class="qa-block">
+                  <span class="qa-label">Identified Issue</span>
+                  <div class="qa-text">
+                    The content introduced several viewpoints without enough distinction, reducing instructional value and making the material feel redundant.
+                  </div>
+                </div>
+                <div class="qa-block">
+                  <span class="qa-label">Feedback Approach</span>
+                  <div class="qa-text">
+                    Suggested either focusing on the most relevant discipline for clarity or retaining multiple perspectives only if each one was clearly differentiated through unique concepts and language.
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="qa-card">
+              <div class="qa-card-head">Case 4 — Structure and Readability Review</div>
+              <div class="qa-card-body">
+                <div class="qa-block">
+                  <span class="qa-label">Context</span>
+                  <div class="qa-text">
+                    Review of opening content intended to establish direction for the lesson.
+                  </div>
+                </div>
+                <div class="qa-block">
+                  <span class="qa-label">Identified Issue</span>
+                  <div class="qa-text">
+                    The material contained useful information, but hierarchy and framing weakened the learning flow and made the beginning feel heavier than necessary.
+                  </div>
+                </div>
+                <div class="qa-block">
+                  <span class="qa-label">Feedback Approach</span>
+                  <div class="qa-text">
+                    Reframed the slide sequence to strengthen hierarchy, surface the key idea earlier, and improve readability without discarding the original content.
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- PB TAB -->
+        <div class="tab-panel" id="tab-pb">
+          <div class="overview-box reveal">
+            During my master’s studies, I contributed as a Policy Brief Writer at the Center for Indigenous and Cultural Psychology (CICP), Gadjah Mada University.<br><br>
+            In this role, I translated psychology research, particularly on family dynamics and social relationships, into actionable policy recommendations relevant to Indonesian education and employment contexts.<br><br>
+            <strong>Notes:</strong> CICP has dedicated teams for research and policy brief development. To ensure that research findings are actionable, both teams collaborate closely. The process focuses on analyzing the relevance of research findings in relation to supporting evidence, current societal issues, and existing Indonesian government regulations.
+          </div>
+
+          <h3 class="subsection-title reveal">Output Sample</h3>
+
+          <div class="pb-summary reveal">
+            <div class="pb-row">
+              <div class="pb-row-label">Title</div>
+              <div class="pb-row-text">
+                <strong>Berjuang Bersama Menyambut Buah Hati (Urgensi Cuti Kelahiran bagi Ayah)</strong><br>
+                No. 01/PB/R01/CICP/2019 · <em>Welcoming a Child Together: The Urgency of Paternal Leave</em>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="subsection-title reveal">Process and Analytical Approach</h3>
+
+          <div class="pb-steps reveal">
+            <div class="pb-step">
+              <div class="pb-step-num">01</div>
+              <div class="pb-step-title">Issue Identification</div>
+              <div class="pb-step-desc">
+                Began by reviewing research findings from the CICP research team on father involvement and child development.
+              </div>
+            </div>
+
+            <div class="pb-step">
+              <div class="pb-step-num">02</div>
+              <div class="pb-step-title">Context Analysis</div>
+              <div class="pb-step-desc">
+                Evaluated the issue against broader social realities and the relevance of the topic within Indonesian contexts.
+              </div>
+            </div>
+
+            <div class="pb-step">
+              <div class="pb-step-num">03</div>
+              <div class="pb-step-title">Regulatory Review</div>
+              <div class="pb-step-desc">
+                Examined related policy and legal references to understand how current regulation supported or limited the issue.
+              </div>
+            </div>
+
+            <div class="pb-step">
+              <div class="pb-step-num">04</div>
+              <div class="pb-step-title">Recommendation Framing</div>
+              <div class="pb-step-desc">
+                Converted findings into actionable recommendations that connect research evidence with practical policy direction.
+              </div>
+            </div>
+          </div>
+
+          <div class="triad-grid reveal">
+            <div class="triad-card">
+              <h4>Process</h4>
+              <p>
+                Synthesized research findings, contextual issues, and regulatory references in order to sharpen one central policy problem and produce a practical line of argument.
+              </p>
+            </div>
+
+            <div class="triad-card">
+              <h4>Analytical Approach</h4>
+              <ul>
+                <li>Focused on relevance between findings and social reality.</li>
+                <li>Examined supporting evidence beyond the original research.</li>
+                <li>Considered Indonesian government regulation as a practical decision context.</li>
+              </ul>
+            </div>
+
+            <div class="triad-card">
+              <h4>Output</h4>
+              <p>
+                Produced a policy brief that translated research on father involvement into a recommendation-oriented document with clear social and policy relevance.
+              </p>
+            </div>
+          </div>
+
+          <h3 class="subsection-title reveal">What This Work Demonstrates</h3>
+
+          <div class="pb-summary reveal">
+            <div class="pb-row">
+              <div class="pb-row-label">Strength Shown</div>
+              <div class="pb-row-text">
+                Ability to bridge psychology research with practical communication, structure evidence into decision-oriented writing, and maintain clarity while dealing with sensitive social issues.
+              </div>
+            </div>
+
+            <div class="pb-row">
+              <div class="pb-row-label">Transferable Value</div>
+              <div class="pb-row-text">
+                This experience strengthens how I approach instructional design and quality work: not only by making content understandable, but also by asking whether it is relevant, actionable, and contextually grounded.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="mono">Contact</div>
+          <h2 class="section-title">Let’s Connect</h2>
+          <p class="contact-copy">
+            If you are exploring instructional design, quality assurance, research translation, or portfolio collaboration opportunities, feel free to reach out.
+          </p>
+        </div>
+
+        <div class="contact-links reveal">
+          <a class="contact-chip" href="mailto:your@email.com">Email</a>
+          <a class="contact-chip" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="contact-chip" href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobilePanel = document.getElementById('mobilePanel');
+
+    menuBtn.addEventListener('click', () => {
+      mobilePanel.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.mobile-panel a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobilePanel.classList.remove('open');
+      });
+    });
+
+    // Tabs
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const target = button.dataset.tab;
+
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabPanels.forEach(panel => panel.classList.remove('active'));
+
+        button.classList.add('active');
+        document.getElementById('tab-' + target).classList.add('active');
+      });
+    });
+
+    // Reveal on scroll
+    const revealItems = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach(item => revealObserver.observe(item));
+
+    // Active nav on scroll
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -45% 0px' });
+
+    sections.forEach(section => sectionObserver.observe(section));
+  </script>
 </body>
 </html>
