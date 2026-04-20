@@ -1076,11 +1076,6 @@
 
     html { font-size: 16px; }
 
-    /* Nav — hide links on very small, show hamburger-like spacing */
-    nav { padding: 0 5vw; height: 56px; }
-    .nav-brand { font-size: 17px; }
-    .nav-links { gap: 12px; }
-    .nav-links a { font-size: 12px; letter-spacing: 0.05em; }
 
     /* Hero */
     section#home[style] {
@@ -1326,7 +1321,7 @@
     .nav-hamburger { display: flex; }
 
     .nav-links {
-      display: none;
+      display: none !important;
       position: fixed;
       top: 0; left: 0; right: 0;
       background: rgba(44,26,14,0.98);
