@@ -1298,18 +1298,81 @@
     .page-section { padding-top: 64px !important; }
     nav { height: 50px; }
   }
+
+  /* ── HAMBURGER MENU ── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px; height: 36px;
+    background: none; border: none;
+    cursor: pointer; padding: 4px;
+    z-index: 200;
+  }
+  .nav-hamburger span {
+    display: block; height: 2px;
+    background: var(--gold);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+  /* Open state — X shape */
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  @media (max-width: 767px) {
+    .nav-hamburger { display: flex; }
+
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(44,26,14,0.98);
+      backdrop-filter: blur(12px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      padding: 80px 0 40px;
+      z-index: 150;
+      min-height: 100vh;
+      list-style: none;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { width: 100%; text-align: center; }
+    .nav-links a {
+      display: block;
+      font-size: 22px !important;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85) !important;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--gold) !important; }
+    .nav-links a::after { display: none; }
+  }
+
 </style>
 </head>
 <body>
 
 <nav>
   <a href="#home" class="nav-brand">Sri Hardyanti</a>
-  <ul class="nav-links">
-    <li><a href="#home">Profile</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#work">Featured Work</a></li>
-    <li><a href="#contact">Contact</a></li>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#home" onclick="closeMenu()">Profile</a></li>
+    <li><a href="#experience" onclick="closeMenu()">Experience</a></li>
+    <li><a href="#work" onclick="closeMenu()">Featured Work</a></li>
+    <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
   </ul>
+  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO + ABOUT -->
@@ -2089,6 +2152,23 @@ function staggerChildren() {
   });
 }
 
+
+
+// ── HAMBURGER MENU ──
+function toggleMenu() {
+  const menu = document.getElementById('nav-links');
+  const btn = document.getElementById('nav-hamburger');
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('nav-links').classList.remove('open');
+  document.getElementById('nav-hamburger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+// Close on Escape
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeMenu(); });
 
 // ── PB SUMMARY CARDS ──
 function togglePBCard(header) {
