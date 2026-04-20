@@ -594,79 +594,9 @@
   /* ═══════════════════════════════════
      RESPONSIVE — MOBILE & TABLET
      ═══════════════════════════════════ */
-  @media (max-width: 900px) {
-    /* Hero + About */
-    section#home[style] {
-      grid-template-columns: 1fr !important;
-      padding: 100px 6vw 60px !important;
-      gap: 40px !important;
-    }
-    .ha-left { grid-column: 1; }
-    .ha-right { grid-column: 1; }
+  
 
-    /* Page sections */
-    .page-section { padding: 80px 6vw 60px; }
-
-    /* Nav */
-    nav { padding: 0 5vw; height: 60px; }
-    .nav-links { gap: 16px; }
-    .nav-links a { font-size: 14px; }
-
-    /* Experience */
-    .exp-grid { grid-template-columns: 1fr; }
-    .exp-domain-label {
-      border-right: none;
-      border-bottom: 1px solid var(--border);
-      padding: 0 0 16px 0;
-      position: static;
-    }
-    .exp-roles { padding: 16px 0 0 0; }
-
-    /* Tabs */
-    .tabs { flex-direction: column; gap: 10px; }
-    .tab-btn { min-width: unset; }
-
-    /* QA Cards */
-    .qa-cards-grid { grid-template-columns: 1fr; }
-
-    /* PB Summary */
-    .pb-summary-item { grid-template-columns: 1fr; gap: 8px; }
-    .pb-read-link-inner { flex-direction: column; align-items: flex-start; }
-
-    /* Lightbox */
-    .lightbox-img { max-width: 95vw; }
-
-    /* Contact */
-    .contact-links { flex-direction: column; align-items: center; }
-    .contact-link { width: 100%; justify-content: center; }
-
-    /* Process table */
-    .process-table { display: block; }
-    .process-table tr { display: block; margin-bottom: 16px; }
-    .process-table td { display: block; width: 100%; }
-    .process-table .step-header { width: 100%; border-bottom: none; }
-
-    /* QA process steps */
-    .qa-process-step { flex-direction: column; gap: 8px; }
-    .qa-step-num { min-width: unset; }
-
-    /* PB steps */
-    .pb-summary-item { flex-direction: column; }
-  }
-
-  @media (max-width: 600px) {
-    html { font-size: 17px; }
-    .ha-name { font-size: clamp(42px, 12vw, 64px) !important; }
-    .section-title { font-size: clamp(28px, 8vw, 40px); }
-    nav { height: 52px; }
-    .nav-brand { font-size: 16px; }
-    .nav-links { gap: 10px; }
-    .nav-links a { font-size: 12px; letter-spacing: 0.06em; }
-    .tab-label { font-size: 16px; }
-    .qa-flip-grid { grid-template-columns: 1fr; }
-    .pb-summary-item { grid-template-columns: 1fr; }
-    .contact-link { font-size: 16px; padding: 14px 20px; }
-  }
+  
 
   /* ── ADVANCED UI ENHANCEMENTS ── */
 
@@ -991,11 +921,382 @@
     font-size:20px; color:var(--gold); font-weight:700;
   }
 
-  @media (max-width:600px) {
-    .qa-timeline::before { left:20px; }
-    .qa-timeline-item { grid-template-columns:48px 1fr; }
-    .qa-timeline-dot { width:24px; height:24px; }
-    .id-process-content { padding:20px 20px 20px 36px; }
+  
+
+  /* ── PB FINAL OUTPUT ── */
+  .pb-output-note {
+    display:flex; align-items:flex-start; gap:14px;
+    background:var(--surface); border-radius:8px;
+    padding:18px 22px; margin-bottom:28px;
+    border:1px solid var(--border);
+  }
+  .pb-output-note-icon {
+    font-size:18px; flex-shrink:0; margin-top:2px;
+  }
+  .pb-output-note-text {
+    font-size:19px; color:var(--muted); line-height:1.8;
+  }
+
+  .pb-drive-card {
+    display:grid; grid-template-columns:1fr auto;
+    align-items:center; gap:24px;
+    background:var(--navy); border-radius:10px;
+    padding:28px 32px; margin-bottom:36px;
+    color:white;
+  }
+  .pb-drive-label {
+    font-family:'Space Mono',monospace; font-size:11px;
+    letter-spacing:0.15em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:6px;
+  }
+  .pb-drive-title {
+    font-family:'Lora',serif; font-size:20px;
+    font-weight:600; color:white; line-height:1.4;
+    margin-bottom:4px;
+  }
+  .pb-drive-meta {
+    font-size:17px; color:rgba(255,255,255,0.55);
+  }
+  .pb-drive-btn {
+    background:var(--gold); color:white;
+    font-size:16px; font-weight:700;
+    padding:14px 24px; border-radius:6px;
+    text-decoration:none; white-space:nowrap;
+    transition:opacity 0.2s; flex-shrink:0;
+    letter-spacing:0.02em;
+  }
+  .pb-drive-btn:hover { opacity:0.85; }
+
+  /* Summary accordion cards */
+  .pb-summary-cards { display:flex; flex-direction:column; gap:0; margin-bottom:40px; }
+  .pb-summary-card {
+    border:1px solid var(--border); border-bottom:none;
+    background:var(--white); overflow:hidden;
+  }
+  .pb-summary-card:first-child { border-radius:8px 8px 0 0; }
+  .pb-summary-card:last-child { border-bottom:1px solid var(--border); border-radius:0 0 8px 8px; }
+  .pb-summary-card-header {
+    display:grid; grid-template-columns:auto 1fr auto;
+    align-items:center; gap:16px;
+    padding:18px 24px; cursor:pointer;
+    background:var(--white); transition:background 0.2s;
+    user-select:none;
+  }
+  .pb-summary-card-header:hover { background:var(--surface); }
+  .pb-summary-card.open .pb-summary-card-header { background:var(--surface); border-bottom:1px solid var(--border); }
+  .pb-summary-card-num {
+    font-family:'Space Mono',monospace; font-size:11px;
+    font-weight:700; color:var(--gold); letter-spacing:0.1em;
+    min-width:24px;
+  }
+  .pb-summary-card-label {
+    font-size:20px; font-weight:700; color:var(--navy);
+  }
+  .pb-summary-card-chevron {
+    font-size:14px; color:var(--gold);
+    transition:transform 0.3s;
+  }
+  .pb-summary-card.open .pb-summary-card-chevron { transform:rotate(180deg); }
+  .pb-summary-card-body {
+    max-height:0; overflow:hidden;
+    transition:max-height 0.4s cubic-bezier(0.22,1,0.36,1);
+    background:var(--cream);
+  }
+  .pb-summary-card.open .pb-summary-card-body { max-height:600px; }
+  .pb-summary-card-content {
+    padding:22px 28px 22px 64px;
+    font-size:20px; color:#4A3728; line-height:1.9;
+  }
+  .pb-summary-card-content ol { margin:10px 0 0 20px; display:flex; flex-direction:column; gap:8px; }
+  .pb-summary-card-content li { font-size:20px; color:#4A3728; line-height:1.85; }
+
+  
+
+  /* ═══════════════════════════════════════════
+     RESPONSIVE — ALL DEVICES
+     Breakpoints:
+       xs:  320–479px  (small phones)
+       sm:  480–767px  (large phones)
+       md:  768–1023px (tablets)
+       lg:  1024px+    (desktop)
+     ═══════════════════════════════════════════ */
+
+  /* ── TABLET (≤900px) ── */
+  @media (max-width: 900px) {
+
+    /* Nav */
+    nav { padding: 0 5vw; height: 60px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 14px; letter-spacing: 0.06em; }
+
+    /* Hero — stack columns */
+    section#home[style] {
+      grid-template-columns: 1fr !important;
+      padding: 90px 6vw 50px !important;
+      gap: 40px !important;
+    }
+    .ha-left { grid-column: 1; }
+    .ha-right { grid-column: 1; }
+
+    /* Page sections */
+    .page-section { padding: 80px 6vw 60px !important; }
+
+    /* Experience */
+    .exp-grid { grid-template-columns: 1fr; }
+    .exp-domain-label {
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding: 0 0 16px 0;
+      position: static;
+    }
+    .exp-roles { padding: 16px 0 0 0; }
+
+    /* Tabs — wrap to 2 columns */
+    .tabs { flex-wrap: wrap; gap: 10px; border-bottom: none; margin-bottom: 32px; }
+    .tab-btn { flex: 1 1 calc(50% - 10px); min-width: 140px; padding: 16px 18px; }
+    .tab-label { font-size: 17px; }
+
+    /* QA */
+    .qa-cards-grid { grid-template-columns: 1fr; }
+    .qa-timeline::before { left: 24px; }
+    .qa-timeline-item { grid-template-columns: 56px 1fr; }
+
+    /* PB */
+    .pb-summary-item { grid-template-columns: 1fr; gap: 8px; }
+    .pb-drive-card { grid-template-columns: 1fr; gap: 16px; }
+    .pb-flow { gap: 0; }
+
+    /* Contact */
+    .contact-links { flex-direction: column; align-items: center; }
+    .contact-link { width: 90%; justify-content: center; }
+  }
+
+  /* ── LARGE PHONE (≤767px) ── */
+  @media (max-width: 767px) {
+
+    html { font-size: 16px; }
+
+    /* Nav — hide links on very small, show hamburger-like spacing */
+    nav { padding: 0 5vw; height: 56px; }
+    .nav-brand { font-size: 17px; }
+    .nav-links { gap: 12px; }
+    .nav-links a { font-size: 12px; letter-spacing: 0.05em; }
+
+    /* Hero */
+    section#home[style] {
+      padding: 80px 5vw 44px !important;
+      gap: 32px !important;
+    }
+    .ha-name { font-size: clamp(40px, 11vw, 60px) !important; margin-bottom: 24px; }
+    .ha-about { font-size: 18px; }
+    .ha-skill-name { font-size: 16px; }
+    .ha-skill-desc { font-size: 14px; }
+    .ha-skills li { padding: 14px 0; gap: 14px; }
+
+    /* Page sections */
+    .page-section { padding: 70px 5vw 50px !important; }
+
+    /* Section titles */
+    .section-title { font-size: clamp(26px, 7vw, 36px); }
+    .subsection-title { font-size: clamp(20px, 5vw, 26px) !important; }
+    .section-counter { font-size: clamp(60px, 18vw, 100px); top: 20px; right: 4vw; }
+
+    /* Tabs — stack to 1 column */
+    .tabs { flex-direction: column; gap: 8px; }
+    .tab-btn { width: 100%; padding: 14px 18px; }
+    .tab-num { font-size: 12px; }
+    .tab-label { font-size: 16px; }
+
+    /* Overview box */
+    .overview-box { font-size: 17px; padding: 20px 22px; }
+
+    /* ID Accordion */
+    .id-process-header { padding: 16px 18px; gap: 12px; }
+    .id-process-step-name { font-size: 17px; }
+    .id-process-content { padding: 18px 18px 18px 28px; }
+    .id-process-content p,
+    .id-process-content li { font-size: 17px; }
+    .id-principle { padding: 16px 18px; }
+    .id-principle-title { font-size: 17px; }
+
+    /* QA Timeline */
+    .qa-timeline::before { left: 18px; }
+    .qa-timeline-item { grid-template-columns: 44px 1fr; }
+    .qa-timeline-dot { width: 22px; height: 22px; }
+    .qa-timeline-dot-num { font-size: 9px; }
+    .qa-timeline-card { margin: 12px 0 12px 12px; }
+    .qa-timeline-card-header { padding: 14px 16px; }
+    .qa-timeline-card-title { font-size: 17px; }
+    .qa-timeline-card-body { padding: 16px 18px; }
+    .qa-timeline-card-body p,
+    .qa-timeline-card-body li { font-size: 17px; }
+
+    /* QA Cards */
+    .qa-card-label { font-size: 16px; padding: 12px 16px; }
+    .qa-card-context,
+    .qa-card-issues { font-size: 16px; }
+    .qa-card-feedback { font-size: 16px; padding: 14px 16px; }
+    .qa-card-content { padding: 16px; }
+
+    /* QA Process steps */
+    .qa-step-title { font-size: 18px; }
+    .qa-step-body p,
+    .qa-step-body li { font-size: 17px; }
+
+    /* PB Flow */
+    .pb-flow-header { padding: 16px 18px; }
+    .pb-flow-title { font-size: 17px; }
+    .pb-flow-body { padding: 16px 18px; }
+    .pb-flow-body p,
+    .pb-flow-body li { font-size: 17px; }
+
+    /* PB Summary cards */
+    .pb-summary-card-label { font-size: 17px; }
+    .pb-summary-card-content { padding: 16px 16px 16px 36px; font-size: 17px; }
+    .pb-summary-card-content li { font-size: 17px; }
+    .pb-drive-card { padding: 20px 20px; }
+    .pb-drive-title { font-size: 17px; }
+
+    /* Process table (fallback) */
+    .process-table { display: block; }
+    .process-table tbody,
+    .process-table tr { display: block; }
+    .process-table td { display: block; width: 100% !important; }
+    .process-table .step-header { border-bottom: none; border-radius: 4px 4px 0 0; }
+
+    /* Contact */
+    .contact-link { width: 100%; font-size: 17px; padding: 14px 18px; }
+
+    /* Back to top */
+    #back-to-top { bottom: 20px; right: 20px; width: 42px; height: 42px; font-size: 18px; }
+  }
+
+  /* ── SMALL PHONE (≤479px) ── */
+  @media (max-width: 479px) {
+
+    html { font-size: 15px; }
+
+    /* Nav — tighten further */
+    nav { padding: 0 4vw; height: 52px; }
+    .nav-brand { font-size: 15px; }
+    .nav-links { gap: 8px; }
+    .nav-links a { font-size: 11px; letter-spacing: 0.03em; }
+
+    /* Hero */
+    section#home[style] {
+      padding: 72px 4vw 36px !important;
+      gap: 24px !important;
+    }
+    .ha-name { font-size: clamp(36px, 13vw, 52px) !important; margin-bottom: 18px; }
+    .ha-about { font-size: 16px; padding-left: 14px; }
+    .ha-about-label { font-size: 10px; }
+    .ha-skills-title { font-size: 10px; }
+    .ha-skill-name { font-size: 15px; }
+    .ha-skill-desc { font-size: 13px; }
+    .ha-skills li { padding: 12px 0; gap: 10px; }
+    .ha-skill-num { font-size: 10px; }
+    .btn-primary { font-size: 13px; padding: 12px 24px; }
+
+    /* Page sections */
+    .page-section { padding: 60px 4vw 40px !important; }
+    section#experience { padding-top: 72px !important; }
+    section#work { padding-top: 72px !important; }
+
+    /* Section titles & counters */
+    .section-title { font-size: clamp(22px, 8vw, 32px); margin-bottom: 28px; }
+    .section-counter { display: none; }
+    .section-rule-label { font-size: 9px; }
+    .subsection-title { font-size: clamp(18px, 5vw, 22px) !important; }
+    .section-eyebrow { font-size: 10px; }
+
+    /* Experience */
+    .exp-org { font-size: 17px; }
+    .exp-role { font-size: 14px; }
+    .exp-desc { font-size: 15px; }
+    .exp-period { font-size: 11px; }
+    .domain-name { font-size: 15px; }
+    .domain-desc { font-size: 13px; }
+
+    /* Tabs */
+    .tab-num { font-size: 10px; }
+    .tab-label { font-size: 15px; }
+    .tabs { gap: 6px; margin-bottom: 24px; }
+    .tab-btn { padding: 12px 14px; }
+
+    /* Overview + note boxes */
+    .overview-box { font-size: 15px; padding: 16px 18px; }
+    .note-box { font-size: 15px; padding: 14px 16px; }
+
+    /* ID Accordion */
+    .id-process-step-num { font-size: 10px; }
+    .id-process-step-name { font-size: 15px; }
+    .id-process-content { padding: 14px 14px 14px 22px; }
+    .id-process-content p,
+    .id-process-content li { font-size: 15px; }
+    .id-process-output { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .btn-outline { font-size: 14px; padding: 8px 14px; }
+
+    /* QA Timeline */
+    .qa-timeline::before { display: none; }
+    .qa-timeline-item { grid-template-columns: 1fr; }
+    .qa-timeline-marker { display: none; }
+    .qa-timeline-card { margin: 0 0 12px 0; }
+    .qa-timeline-card-title { font-size: 15px; }
+    .qa-timeline-card-body p,
+    .qa-timeline-card-body li { font-size: 15px; }
+
+    /* QA process steps */
+    .qa-process-steps { gap: 0; }
+    .qa-process-step { flex-direction: column; gap: 6px; padding: 16px 0; }
+    .qa-step-title { font-size: 16px; }
+    .qa-step-body p,
+    .qa-step-body li { font-size: 15px; }
+
+    /* QA Cards */
+    .qa-card-label { font-size: 14px; }
+    .qa-card-context,
+    .qa-card-issues,
+    .qa-card-feedback { font-size: 15px; }
+
+    /* Category titles */
+    .qa-category-title { font-size: 18px; }
+
+    /* PB */
+    .pb-flow-title { font-size: 15px; }
+    .pb-flow-num { font-size: 10px; }
+    .pb-flow-body p,
+    .pb-flow-body li { font-size: 15px; }
+    .pb-flow-header { padding: 14px 14px 14px 18px; }
+    .pb-summary-card-label { font-size: 15px; }
+    .pb-summary-card-num { font-size: 10px; }
+    .pb-summary-card-content { padding: 14px 14px 14px 28px; font-size: 15px; }
+    .pb-drive-card { padding: 18px; border-radius: 8px; }
+    .pb-drive-title { font-size: 15px; }
+    .pb-drive-btn { font-size: 14px; padding: 12px 18px; width: 100%; text-align: center; }
+
+    /* PB summary list */
+    .pb-summary-label { font-size: 13px; }
+    .pb-summary-text,
+    .pb-rec-list li,
+    .pb-guiding-list li { font-size: 15px; }
+
+    /* Other publications */
+    .pub-list li { font-size: 15px; }
+
+    /* Contact */
+    #contact[style] { padding: 60px 4vw !important; }
+    .contact-tagline { font-size: 16px; }
+    .contact-link { font-size: 15px; padding: 12px 14px; }
+
+    /* Back to top */
+    #back-to-top { bottom: 16px; right: 16px; width: 38px; height: 38px; font-size: 16px; }
+  }
+
+  /* ── LANDSCAPE PHONE (≤767px height, wide) ── */
+  @media (max-height: 500px) and (max-width: 900px) {
+    section#home[style] { padding-top: 64px !important; padding-bottom: 32px !important; }
+    .page-section { padding-top: 64px !important; }
+    nav { height: 50px; }
   }
 </style>
 </head>
@@ -1557,48 +1858,85 @@
 
 
     <h3 class="subsection-title reveal">Final Output</h3>
-    <p class="reveal" style="font-size:21px;color:var(--muted);margin-bottom:24px;font-weight:400;line-height:1.85;">
-      Notes: This policy brief article is originally published in Bahasa Indonesia. I have provided the English summaries to reach a broader audience.
-    </p>
 
-    <div class="pb-read-link reveal">
-      <div class="pb-read-link-inner">
-        <div>
-          <div style="font-weight:600;font-size:clamp(14px,1.05vw,17px);color:var(--navy);margin-bottom:4px;">Read the Full Version (Bahasa Indonesia)</div>
-          <div style="font-size:21px;color:var(--muted);">Berjuang Bersama Menyambut Buah Hati — No. 01/PB/R01/CICP/2019</div>
-        </div>
-        <a href="https://drive.google.com/file/d/1qYIzZJwSHlQQjGZBOwljJclMU2WBKCSm/view?usp=sharing" target="_blank" class="btn-outline">Read Full Article ↗</a>
-      </div>
+    <div class="pb-output-note reveal">
+      <span class="pb-output-note-icon">📝</span>
+      <span class="pb-output-note-text">Notes: This policy brief article is originally published in Bahasa Indonesia. I have provided the English summaries to reach a broader audience.</span>
     </div>
 
-    <div class="pb-summary-list reveal">
-      <div class="pb-summary-item">
-        <div class="pb-summary-label">Executive Summary</div>
-        <div class="pb-summary-text">Early paternal involvement plays a critical role in supporting children's cognitive, social, and emotional development, particularly in building strong emotional bonds during the newborn stage. However, in Indonesia, early paternal involvement is often constrained by structural factors, particularly the lack of clearly defined paternal leave policies, which limits opportunities for fathers to engage during this critical period. Therefore, establishing a clear and specific paternal leave policy is essential to support early father and child interaction.</div>
+    <div class="pb-drive-card reveal">
+      <div>
+        <div class="pb-drive-label">Full Article</div>
+        <div class="pb-drive-title">Berjuang Bersama Menyambut Buah Hati (Urgensi Cuti Kelahiran bagi Ayah)</div>
+        <div class="pb-drive-meta">No. 01/PB/R01/CICP/2019 &nbsp;·&nbsp; Bahasa Indonesia</div>
       </div>
-      <div class="pb-summary-item">
-        <div class="pb-summary-label">Background</div>
-        <div class="pb-summary-text">Child developmental challenges in Indonesia, including behavioral issues and social difficulties, remain a significant concern. Research highlights the importance of family dynamics, particularly the role of fathers, in shaping children's developmental outcomes. Despite this, existing social and institutional systems have not fully supported active paternal involvement, especially during the early stages of a child's life. This creates a need to examine how current structures, including workplace policies and government regulations, influence parenting practices.</div>
-      </div>
-      <div class="pb-summary-item">
-        <div class="pb-summary-label">Scientific Evidence</div>
-        <div class="pb-summary-text">Research indicates that limited paternal involvement during early childhood is associated with weaker emotional bonding and reduced openness between father and child, increasing the risk of behavioral and developmental challenges later in life. Trust plays a central role in this relationship, developing through consistent and meaningful interaction. When such interaction is limited, the formation of trust and emotional connection is constrained. These interaction patterns are shaped not only by individual factors, but also by structural conditions. In the absence of clearly defined paternal leave policies, fathers have fewer opportunities to engage during the newborn stage, limiting the potential for early bonding.</div>
-      </div>
-      <div class="pb-summary-item">
-        <div class="pb-summary-label">Implication: Strategic Direction</div>
-        <div class="pb-summary-text">Addressing this issue requires a systemic approach that integrates public awareness, policy reform, and cross-sector collaboration. Strengthening support for early paternal involvement should be positioned as part of a broader effort to improve child development outcomes in Indonesia.</div>
-      </div>
-      <div class="pb-summary-item">
-        <div class="pb-summary-label">Recommendation: Actionable Steps</div>
-        <div class="pb-summary-text">
-          <ol class="pb-rec-list">
-            <li>Increase public awareness of the importance of father involvement in early parenting.</li>
-            <li>Revise National Civil Service Agency Regulation No. 24 of 2017 to explicitly include paternal leave.</li>
-            <li>Provide support mechanisms for civil servant families to ensure effective implementation of paternal leave.</li>
-            <li>Encourage collaboration between government and industry to ensure that paternal leave policies are practical and sustainable.</li>
-          </ol>
+      <a href="https://drive.google.com/file/d/1qYIzZJwSHlQQjGZBOwljJclMU2WBKCSm/view?usp=sharing" target="_blank" class="pb-drive-btn">Read Full Article ↗</a>
+    </div>
+
+    <div class="pb-summary-cards reveal">
+
+      <div class="pb-summary-card open">
+        <div class="pb-summary-card-header" onclick="togglePBCard(this)">
+          <span class="pb-summary-card-num">01</span>
+          <span class="pb-summary-card-label">Executive Summary</span>
+          <span class="pb-summary-card-chevron">▼</span>
+        </div>
+        <div class="pb-summary-card-body">
+          <div class="pb-summary-card-content">Early paternal involvement plays a critical role in supporting children's cognitive, social, and emotional development, particularly in building strong emotional bonds during the newborn stage. However, in Indonesia, early paternal involvement is often constrained by structural factors, particularly the lack of clearly defined paternal leave policies, which limits opportunities for fathers to engage during this critical period. Therefore, establishing a clear and specific paternal leave policy is essential to support early father and child interaction.</div>
         </div>
       </div>
+
+      <div class="pb-summary-card">
+        <div class="pb-summary-card-header" onclick="togglePBCard(this)">
+          <span class="pb-summary-card-num">02</span>
+          <span class="pb-summary-card-label">Background</span>
+          <span class="pb-summary-card-chevron">▼</span>
+        </div>
+        <div class="pb-summary-card-body">
+          <div class="pb-summary-card-content">Child developmental challenges in Indonesia, including behavioral issues and social difficulties, remain a significant concern. Research highlights the importance of family dynamics, particularly the role of fathers, in shaping children's developmental outcomes. Despite this, existing social and institutional systems have not fully supported active paternal involvement, especially during the early stages of a child's life. This creates a need to examine how current structures, including workplace policies and government regulations, influence parenting practices.</div>
+        </div>
+      </div>
+
+      <div class="pb-summary-card">
+        <div class="pb-summary-card-header" onclick="togglePBCard(this)">
+          <span class="pb-summary-card-num">03</span>
+          <span class="pb-summary-card-label">Scientific Evidence</span>
+          <span class="pb-summary-card-chevron">▼</span>
+        </div>
+        <div class="pb-summary-card-body">
+          <div class="pb-summary-card-content">Research indicates that limited paternal involvement during early childhood is associated with weaker emotional bonding and reduced openness between father and child, increasing the risk of behavioral and developmental challenges later in life. Trust plays a central role in this relationship, developing through consistent and meaningful interaction. When such interaction is limited, the formation of trust and emotional connection is constrained. These interaction patterns are shaped not only by individual factors, but also by structural conditions. In the absence of clearly defined paternal leave policies, fathers have fewer opportunities to engage during the newborn stage, limiting the potential for early bonding.</div>
+        </div>
+      </div>
+
+      <div class="pb-summary-card">
+        <div class="pb-summary-card-header" onclick="togglePBCard(this)">
+          <span class="pb-summary-card-num">04</span>
+          <span class="pb-summary-card-label">Implication: Strategic Direction</span>
+          <span class="pb-summary-card-chevron">▼</span>
+        </div>
+        <div class="pb-summary-card-body">
+          <div class="pb-summary-card-content">Addressing this issue requires a systemic approach that integrates public awareness, policy reform, and cross-sector collaboration. Strengthening support for early paternal involvement should be positioned as part of a broader effort to improve child development outcomes in Indonesia.</div>
+        </div>
+      </div>
+
+      <div class="pb-summary-card">
+        <div class="pb-summary-card-header" onclick="togglePBCard(this)">
+          <span class="pb-summary-card-num">05</span>
+          <span class="pb-summary-card-label">Recommendation: Actionable Steps</span>
+          <span class="pb-summary-card-chevron">▼</span>
+        </div>
+        <div class="pb-summary-card-body">
+          <div class="pb-summary-card-content">
+            <ol class="pb-rec-list">
+              <li>Increase public awareness of the importance of father involvement in early parenting.</li>
+              <li>Revise National Civil Service Agency Regulation No. 24 of 2017 to explicitly include paternal leave.</li>
+              <li>Provide support mechanisms for civil servant families to ensure effective implementation of paternal leave.</li>
+              <li>Encourage collaboration between government and industry to ensure that paternal leave policies are practical and sustainable.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <h3 class="subsection-title reveal">Other Publications</h3>
@@ -1751,6 +2089,14 @@ function staggerChildren() {
   });
 }
 
+
+// ── PB SUMMARY CARDS ──
+function togglePBCard(header) {
+  const card = header.parentElement;
+  const isOpen = card.classList.contains('open');
+  document.querySelectorAll('.pb-summary-card.open').forEach(c => c.classList.remove('open'));
+  if (!isOpen) card.classList.add('open');
+}
 
 // ── ACCORDION (ID Process) ──
 function toggleProcess(header) {
